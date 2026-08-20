@@ -8,7 +8,7 @@ export type Proyecto = {
   destacado: boolean;
   imagen?: string;
   funcionalidades?: string[];
-  icono?: string;
+  icono?: "calendar" | "dumbbell";
 };
 
 export const proyectos: Proyecto[] = [
@@ -20,27 +20,27 @@ export const proyectos: Proyecto[] = [
     demoUrl: "#",
     repoUrl: "#",
     destacado: true,
-    imagen: "/images/pandocba.jpg",
+    imagen: "/images/pandocba2.jpg",
     funcionalidades: ["Catálogo dinámico con filtrado avanzado", "Gestión de categorías y jerarquías", "Colecciones exclusivas y drops"],
   },
   {
-    nombre: "Task Manager Pro",
-    estado: "",
-    descripcion: "Aplicación de gestión de tareas enfocada en productividad para desarrolladores. Soporte offline y sincronización en tiempo real.",
-    stack: ["React", "Firebase", "Tailwind"],
+    nombre: "Los Onis",
+    estado: "Finalizado",
+    descripcion: "Sistema de gestión de clientes y turnos para un taller de herrería. Incluye calendario mensual con indicadores por color, agenda diaria dividida en mañana/tarde, control de tareas con historial de reprogramación y autenticación por PIN.",
+    stack: ["Next.js 16", "React 19", "Prisma", "PostgreSQL (Neon)", "Tailwind CSS 4", "JWT"],
     demoUrl: null,
     repoUrl: "#",
     destacado: false,
-    icono: "✓",
+    icono: "calendar",
   },
   {
-    nombre: "Weather App CLI",
-    estado: "",
-    descripcion: "Herramienta de línea de comandos para consultar el clima. Interfaz de terminal limpia con gráficos ASCII.",
-    stack: ["Node.js", "Axios", "Chalk"],
+    nombre: "FerBertero Coach",
+    estado: "Finalizado",
+    descripcion: "Landing page para el entrenador personal Fer Bertero. Presenta planes de entrenamiento, testimonios de alumnos y contacto directo por WhatsApp, con soporte PWA y foco en performance y SEO.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     demoUrl: "#",
     repoUrl: "#",
     destacado: false,
-    icono: "☼",
+    icono: "dumbbell",
   },
 ];
