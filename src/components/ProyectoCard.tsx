@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import type { KeyboardEvent } from "react";
 import { Calendar, Dumbbell } from "lucide-react";
 import type { Proyecto } from "@/lib/proyectos";
 
@@ -9,10 +12,27 @@ const iconos = {
 
 export default function ProyectoCard({ proyecto }: { proyecto: Proyecto }) {
   const Icono = proyecto.icono ? iconos[proyecto.icono] : undefined;
+  const abrirDemo = () => {
+    if (proyecto.demoUrl) {
+      window.open(proyecto.demoUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+  const manejarTeclado = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      abrirDemo();
+    }
+  };
+  const propiedadesEnlace = proyecto.demoUrl
+    ? { role: "link", tabIndex: 0, onClick: abrirDemo, onKeyDown: manejarTeclado }
+    : {};
+  const clasesInteractivas = proyecto.demoUrl
+    ? " cursor-pointer transition-[border-color,box-shadow] hover:border-cyber-lime/50 hover:shadow-[0_0_18px_rgba(193,255,114,0.08)]"
+    : "";
 
   if (proyecto.destacado) {
     return (
-      <article className="cyber-card group mb-8 overflow-hidden border border-outline/30 bg-charcoal">
+      <article className={`cyber-card group mb-8 overflow-hidden border border-outline/30 bg-charcoal${clasesInteractivas}`} {...propiedadesEnlace}>
         <div className="grid grid-cols-1 lg:grid-cols-12">
           <div className="relative h-64 overflow-hidden border-b border-outline/30 lg:col-span-7 lg:h-auto lg:border-r lg:border-b-0">
              {proyecto.imagen && <Image src={proyecto.imagen} alt={`Vista previa de ${proyecto.nombre}`} fill priority sizes="(min-width: 1024px) 58vw, 100vw" className="project-image object-cover" />}
@@ -33,7 +53,7 @@ export default function ProyectoCard({ proyecto }: { proyecto: Proyecto }) {
   }
 
   return (
-    <article className="cyber-card flex flex-col border border-outline/30 bg-charcoal p-8">
+    <article className={`cyber-card flex flex-col border border-outline/30 bg-charcoal p-8${clasesInteractivas}`} {...propiedadesEnlace}>
       <div className="mb-6 flex items-start justify-between">{Icono && <Icono className="size-8 text-cyber-lime" aria-hidden="true" />}<ProjectLinks proyecto={proyecto} compact /></div>
       <h3 className="mb-3 font-display text-2xl font-semibold text-white">{proyecto.nombre}</h3>
       <p className="mb-6 flex-grow leading-relaxed text-on-surface-variant">{proyecto.descripcion}</p>
@@ -43,5 +63,5 @@ export default function ProyectoCard({ proyecto }: { proyecto: Proyecto }) {
 }
 
 function ProjectLinks({ proyecto, compact = false }: { proyecto: Proyecto; compact?: boolean }) {
-  return <div className="flex gap-4 font-mono text-sm">{proyecto.demoUrl && <a href={proyecto.demoUrl} aria-label={`Demo de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">↗{!compact && " Demo"}</a>}<a href={proyecto.repoUrl} aria-label={`Repositorio de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">&lt;/&gt;{!compact && " Repo"}</a></div>;
+  return <div className="flex gap-4 font-mono text-sm">{proyecto.demoUrl && <a href={proyecto.demoUrl} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()} aria-label={`Demo de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">↗{!compact && " Demo"}</a>}<a href={proyecto.repoUrl} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()} aria-label={`Repositorio de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">&lt;/&gt;{!compact && " Repo"}</a></div>;
 }

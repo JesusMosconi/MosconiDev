@@ -13,7 +13,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "DEV.SOLO | Software Engineer",
+  title: "MosconiDev | Software Engineer",
   description: "Portafolio de desarrollo de software full-stack.",
 };
 

@@ -11,7 +11,7 @@ export default function Hero() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-outline/20 bg-obsidian/80 backdrop-blur-md">
         <nav className="mx-auto flex max-w-container items-center justify-between px-6 py-4" aria-label="Navegación principal">
-          <a href="#" className="font-display text-2xl font-extrabold text-white">DEV.SOLO</a>
+          <a href="#" className="font-display text-2xl font-extrabold text-white">MosconiDev</a>
           <div className="hidden gap-8 md:flex">
             {links.map(([label, href]) => <a key={href} href={href} className="font-semibold text-on-surface-variant transition-colors hover:text-white">{label}</a>)}
           </div>

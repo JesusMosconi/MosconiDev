@@ -16,6 +16,12 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Variables de entorno
+
+Creá un archivo `.env.local` a partir de `.env.local.example` y configurá `RESEND_API_KEY`. Podés obtener una clave desde [Resend API Keys](https://resend.com/api-keys).
+
+El remitente actual usa el dominio de pruebas de Resend (`onboarding@resend.dev`). Cuando haya un dominio propio verificado disponible, reemplazalo por esa dirección en la ruta de contacto.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
