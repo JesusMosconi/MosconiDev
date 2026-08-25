@@ -55,7 +55,7 @@ export default function Contacto() {
                 <p className="mb-6 text-on-surface-variant">&gt; Status: Disponible para oportunidades freelance.</p>
 
                 <p className="mb-2"><span className="text-white">$</span> cat contact_info.txt</p>
-                <p className="text-on-surface-variant">&gt; EMAIL: jechu1.mosconi@gmail.com</p>
+                <p className="text-on-surface-variant">&gt; EMAIL: contacto.mosconidev@gmail.com</p>
                 <p className="text-on-surface-variant">&gt; GITHUB: /JesusMosconi</p>
                 <p className="mb-6 text-on-surface-variant">&gt; LINKEDIN: /in/jesusmosconi</p>
 
@@ -88,7 +88,7 @@ export default function Contacto() {
                   {estado === "enviando" ? "Enviando..." : "Enviar"}
                 </button>
                 {estado === "enviado" && <p className="font-mono text-sm text-cyber-lime">Mensaje enviado. Te voy a responder a la brevedad.</p>}
-                {estado === "error" && <p className="border-l-2 border-red-400 pl-3 font-mono text-sm text-red-300">Hubo un problema al enviar. Probá de nuevo o escribime directo a jechu1.mosconi@gmail.com.</p>}
+                {estado === "error" && <p className="border-l-2 border-red-400 pl-3 font-mono text-sm text-red-300">Hubo un problema al enviar. Probá de nuevo o escribime directo a contacto.mosconidev@gmail.com.</p>}
               </form>
             </div>
           </div>

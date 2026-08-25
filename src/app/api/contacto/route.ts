@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       // Dominio de pruebas de Resend. Reemplazar por uno propio verificado,
       // por ejemplo contacto@mosconidev.com, al verificarlo en el panel de Resend.
       from: "MosconiDev <onboarding@resend.dev>",
-      to: "jechu1.mosconi@gmail.com",
+      to: "contacto.mosconidev@gmail.com",
       replyTo: email.trim(),
       subject: `Nuevo contacto desde portfolio — ${nombre.trim()}`,
       html: `<h1>Nuevo contacto desde el portfolio</h1><p><strong>Nombre:</strong> ${nombreSeguro}</p><p><strong>Email:</strong> ${emailSeguro}</p><p><strong>Descripción:</strong><br />${descripcionSegura}</p>`,
