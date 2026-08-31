@@ -56,8 +56,8 @@ export default function Contacto() {
 
                 <p className="mb-2"><span className="text-white">$</span> cat contact_info.txt</p>
                 <p className="text-on-surface-variant">&gt; EMAIL: contacto.mosconidev@gmail.com</p>
-                <p className="text-on-surface-variant">&gt; GITHUB: /JesusMosconi</p>
-                <p className="mb-6 text-on-surface-variant">&gt; LINKEDIN: /in/jesusmosconi</p>
+                <p className="text-on-surface-variant">&gt; GITHUB: <a href="https://github.com/JesusMosconi">/JesusMosconi</a></p>
+                <p className="mb-6 text-on-surface-variant">&gt; LINKEDIN: <a href="https://www.linkedin.com/in/jesusmosconi">/in/jesusmosconi</a></p>
 
                 <p><span className="text-white">$</span> <span className="blink">_</span></p>
               </div>
@@ -94,7 +94,7 @@ export default function Contacto() {
           </div>
         </section>
 
-        <p className="text-center text-lg text-on-surface/60">© 2024 MosconiDev — ENGINEERED FOR PRECISION</p>
+        <p className="text-center text-lg text-on-surface/60">© 2024 MosconiDev — Córdoba, Argentina</p>
       </div>
     </footer>
   );

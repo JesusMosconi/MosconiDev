@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import type { KeyboardEvent } from "react";
-import { Calendar, Dumbbell } from "lucide-react";
+import { Calendar, Dumbbell, Hammer, Scissors } from "lucide-react";
 import type { Proyecto } from "@/lib/proyectos";
 
 const iconos = {
   calendar: Calendar,
   dumbbell: Dumbbell,
+  hammer: Hammer,
+  scissors: Scissors,
 };
 
 export default function ProyectoCard({ proyecto }: { proyecto: Proyecto }) {
@@ -54,7 +56,27 @@ export default function ProyectoCard({ proyecto }: { proyecto: Proyecto }) {
 
   return (
     <article className={`cyber-card flex flex-col border border-outline/30 bg-charcoal p-8${clasesInteractivas}`} {...propiedadesEnlace}>
+      {proyecto.mostrarPlaceholderImagen && (
+        <div className="relative mb-6 aspect-video w-full overflow-hidden border border-outline/20 bg-outline/10">
+          {proyecto.imagen ? (
+            <Image
+              src={proyecto.imagen}
+              alt={`Vista previa de ${proyecto.nombre}`}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          ) : (
+            <div
+              className="size-full animate-pulse"
+              role="img"
+              aria-label={`Imagen de ${proyecto.nombre} pendiente de carga`}
+            />
+          )}
+        </div>
+      )}
       <div className="mb-6 flex items-start justify-between">{Icono && <Icono className="size-8 text-cyber-lime" aria-hidden="true" />}<ProjectLinks proyecto={proyecto} compact /></div>
+      {proyecto.categoria && <span className="mb-4 w-fit border border-cyber-lime/30 bg-cyber-lime/10 px-3 py-1 font-mono text-xs uppercase text-cyber-lime">{proyecto.categoria}</span>}
       <h3 className="mb-3 font-display text-2xl font-semibold text-white">{proyecto.nombre}</h3>
       <p className="mb-6 flex-grow leading-relaxed text-on-surface-variant">{proyecto.descripcion}</p>
       <div className="mt-auto flex flex-wrap gap-3 border-t border-outline/20 pt-4 font-mono text-xs text-outline">{proyecto.stack.map((item) => <span key={item}>{item}</span>)}</div>
@@ -63,5 +85,7 @@ export default function ProyectoCard({ proyecto }: { proyecto: Proyecto }) {
 }
 
 function ProjectLinks({ proyecto, compact = false }: { proyecto: Proyecto; compact?: boolean }) {
-  return <div className="flex gap-4 font-mono text-sm">{proyecto.demoUrl && <a href={proyecto.demoUrl} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()} aria-label={`Demo de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">↗{!compact && " Demo"}</a>}<a href={proyecto.repoUrl} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()} aria-label={`Repositorio de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">&lt;/&gt;{!compact && " Repo"}</a></div>;
+  const nuevaPestana = compact ? { target: "_blank", rel: "noopener noreferrer" } : {};
+
+  return <div className="flex gap-4 font-mono text-sm">{proyecto.demoUrl && <a href={proyecto.demoUrl} {...nuevaPestana} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()} aria-label={`Demo de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">↗{!compact && " Demo"}</a>}{proyecto.repoUrl && <a href={proyecto.repoUrl} {...nuevaPestana} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()} aria-label={`Repositorio de ${proyecto.nombre}`} className="text-white transition-colors hover:text-cyber-lime">&lt;/&gt;{!compact && " Repo"}</a>}</div>;
 }

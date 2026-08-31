@@ -4,11 +4,13 @@ export type Proyecto = {
   descripcion: string;
   stack: string[];
   demoUrl: string | null;
-  repoUrl: string;
+  repoUrl: string | null;
   destacado: boolean;
   imagen?: string;
+  mostrarPlaceholderImagen?: boolean;
+  categoria?: string;
   funcionalidades?: string[];
-  icono?: "calendar" | "dumbbell";
+  icono?: "calendar" | "dumbbell" | "hammer" | "scissors";
 };
 
 export const proyectos: Proyecto[] = [
@@ -31,6 +33,9 @@ export const proyectos: Proyecto[] = [
     demoUrl: "https://los-onis-ikjt.vercel.app/login",
     repoUrl: "https://github.com/JesusMosconi/LosOnis.git",
     destacado: false,
+    imagen: "/images/LosOnis.jpg",
+    mostrarPlaceholderImagen: true,
+    categoria: "Client project",
     icono: "calendar",
   },
   {
@@ -41,6 +46,35 @@ export const proyectos: Proyecto[] = [
     demoUrl: "https://manny-page.vercel.app/",
     repoUrl: "https://github.com/JesusMosconi/FerBerteroCoach.git",
     destacado: false,
+    imagen: "/images/ferbertero.jpg",
+    mostrarPlaceholderImagen: true,
+    categoria: "Client project",
     icono: "dumbbell",
+  },
+  {
+    nombre: "Herrería L&J",
+    estado: "Finalizado",
+    descripcion: "Sitio de portfolio y presupuestos para una herrería familiar. Muestra los trabajos realizados y permite a los clientes solicitar cotizaciones.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL (Neon)", "Vercel"],
+    demoUrl: "https://herreria-ly-jv2-alpha.vercel.app/",
+    repoUrl: "https://github.com/JesusMosconi/HerreriaLyJv2",
+    destacado: false,
+    imagen: "/images/herrerialyj.jpg",
+    mostrarPlaceholderImagen: true,
+    categoria: "Client project",
+    icono: "hammer",
+  },
+  {
+    nombre: "Demo Peluquería — Bella Estilo",
+    estado: "Finalizado",
+    descripcion: "Demo funcional (no mockup) de un sistema de turnos para peluquería. Wizard de reserva en 4 pasos (sección → profesional → fecha/horario → confirmación) y panel admin para gestionar turnos, bloquear horarios y administrar profesionales/secciones.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL (Neon)", "Vercel"],
+    demoUrl: "https://demo-peluqueria-green.vercel.app/",
+    repoUrl: "https://github.com/JesusMosconi/demo-peluqueria",
+    destacado: false,
+    imagen: "/images/demopeluqueria.jpg",
+    mostrarPlaceholderImagen: true,
+    categoria: "Demo / Proyecto personal",
+    icono: "scissors",
   },
 ];
